@@ -26,5 +26,5 @@ func _on_body_entered(body):
 
 		#victory if you collect enough coins
 		if Globals.coins >= Globals.necessary_coins:
-			get_tree().change_scene_to_file("res://start_screen.tscn")
+			Globals.victory()
 		queue_free()#coin is destroyed when touching a player
