@@ -54,7 +54,7 @@ func update_healthbar():
 		$Healthbar_player/HealthBar.texture_progress = bar_red
 
 func update_coins():
-	$Panel/Coins_Counter.text = "Money: " + str(Globals.coins)
+	$Panel/Coins_Counter.text = "Money: " + str(Globals.coins) + "/" + str(Globals.necessary_coins)
 		
 #hiding/showins is unused for the player for now since the HP is in the top-left of the screen instead of above the player
 #However, this could code be used in common enemy healthbars instead

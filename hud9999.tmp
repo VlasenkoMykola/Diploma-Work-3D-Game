@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8apneiew5wjh"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_hd6bh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x2dlq"]
+font_color = Color(1, 0.882353, 0, 1)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hd6bh")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -183.0
+offset_bottom = 76.0
+grow_horizontal = 0
+
+[node name="Coins_Counter" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 21.0
+offset_right = 182.0
+offset_bottom = 44.0
+label_settings = SubResource("LabelSettings_x2dlq")
+
+[node name="Healthbar_player" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 524.0
+offset_bottom = 50.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="Healthbar_player"]
+layout_mode = 0
+offset_right = 497.0
+offset_bottom = 40.0
+scale = Vector2(2, 1)
+step = 0.01
+
+[node name="Label_HP" type="Label" parent="Healthbar_player"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 6.0
+offset_right = 123.0
+offset_bottom = 23.0

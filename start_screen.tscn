@@ -11,7 +11,9 @@ script = ExtResource("1_hnka7")
 [node name="Label_Controls" type="Label" parent="."]
 offset_right = 380.0
 offset_bottom = 423.0
-text = "Controls:
+text = "IPS-43 Vlasenko Mykola
+
+Controls:
 
 WASD - move
 Space - jump (can double jump)
@@ -20,7 +22,9 @@ leftclick - shoot
 hold rightclick - aim
 
 1 - shockwave
-2 - TODO"
+2 - TODO
+
+Collect 100 money to win the game"
 
 [node name="Button_Play" type="Button" parent="."]
 offset_left = 429.0
