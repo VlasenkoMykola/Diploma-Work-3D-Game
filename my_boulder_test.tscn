@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://dme2hboe66hnp"]
+
+[sub_resource type="GDScript" id="GDScript_d8l7u"]
+script/source = "extends RigidBody3D
+
+# Set the force strength for rolling the sphere
+var roll_force = 10.0
+
+func _ready():
+	pass
+	# Optional: Ensure the sphere has some friction to simulate realistic rolling
+	#self.physics_material_override = PhysicsMaterial.new()
+	#self.physics_material_override.friction = 0.5
+	#self.physics_material_override.bounce = 0.2
+
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		var force = Vector3.ZERO
+		# Check for input and set the direction of the force
+		if Input.is_action_pressed(\"ui_up\"):  # W key
+			force = Vector3(0, 0, -1)
+		elif Input.is_action_pressed(\"ui_down\"):  # S key
+			force = Vector3(0, 0, 1)
+		elif Input.is_action_pressed(\"ui_left\"):  # A key
+			force = Vector3(-1, 0, 0)
+		elif Input.is_action_pressed(\"ui_right\"):  # D key
+			force = Vector3(1, 0, 0)
+		# Apply impulse to roll the sphere
+		if force != Vector3.ZERO:
+			apply_impulse(Vector3.ZERO, force * roll_force)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	apply_impulse(Vector3.ZERO, Vector3(1, 0, 0) * 10000)
+"
+
+[sub_resource type="SphereMesh" id="SphereMesh_m4xpe"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tl02c"]
+
+[node name="RigidBody3D" type="RigidBody3D"]
+script = SubResource("GDScript_d8l7u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_m4xpe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_tl02c")

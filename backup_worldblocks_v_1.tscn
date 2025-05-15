@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv2kqdkf5cv6s"]
+
+[ext_resource type="PackedScene" uid="uid://c6nd2hj2miqdo" path="res://resources/worldblocks_v1.glb" id="1_5apu6"]
+
+[node name="worldblocks_v1" instance=ExtResource("1_5apu6")]

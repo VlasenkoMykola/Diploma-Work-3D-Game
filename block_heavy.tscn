@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b85l1mtbcwtt0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wh44e"]
+metallic = 1.0
+roughness = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_2wb3b"]
+material = SubResource("StandardMaterial3D_wh44e")
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ek4y3"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[node name="Block_Steel" type="RigidBody3D"]
+mass = 4.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_2wb3b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ek4y3")

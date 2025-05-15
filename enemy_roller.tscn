@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://ba1knqy3gfibn"]
+
+[ext_resource type="Script" path="res://enemy_roller.gd" id="1_0nbjm"]
+[ext_resource type="PackedScene" uid="uid://nikj6l3wkphd" path="res://health_component.tscn" id="2_bxxbg"]
+[ext_resource type="PackedScene" uid="uid://cq4d7vaby58vp" path="res://floating_healthbar.tscn" id="3_q41gq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttbf6"]
+albedo_color = Color(1, 0.239216, 0.239216, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_uqquq"]
+material = SubResource("StandardMaterial3D_ttbf6")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qvwae"]
+radius = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vsaqi"]
+radius = 2.0
+
+[node name="enemy_roller" type="RigidBody3D"]
+mass = 3.0
+script = ExtResource("1_0nbjm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_uqquq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_qvwae")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_bxxbg")]
+max_health = 150.0
+health = 150.0
+
+[node name="GroundCheck_Raycast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -1.25, 0)
+
+[node name="JumpTimer" type="Timer" parent="."]
+
+[node name="Area3D_Detection_Area" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D_Detection_Area"]
+shape = SubResource("SphereShape3D_vsaqi")
+
+[node name="Floating_Healthbar" parent="." instance=ExtResource("3_q41gq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.148665, 1.12901, 0.314859)

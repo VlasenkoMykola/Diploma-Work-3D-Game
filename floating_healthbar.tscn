@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq4d7vaby58vp"]
+
+[ext_resource type="Script" path="res://floating_healthbar.gd" id="1_wdeo2"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p0v5s"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w0px8"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_p0v5s")
+
+[sub_resource type="QuadMesh" id="QuadMesh_t25sa"]
+material = SubResource("StandardMaterial3D_w0px8")
+
+[node name="Floating_Healthbar" type="Node3D"]
+script = ExtResource("1_wdeo2")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Enemy_Healthbar" type="TextureProgressBar" parent="SubViewport/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3, 3)
+
+[node name="Label" type="Label" parent="SubViewport/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Test Label
+Test Label
+Test Label
+Test Label
+Test Label
+Test Label
+Test Label
+Test Label
+"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_t25sa")

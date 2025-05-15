@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://dltp6bx7wisaa"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_ihfgm"]
+[ext_resource type="Script" path="res://Camera_Controller.gd" id="2_dit00"]
+[ext_resource type="PackedScene" uid="uid://nikj6l3wkphd" path="res://health_component.tscn" id="3_tbqg6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r78pa"]
+albedo_color = Color(0.423529, 0.654902, 0.180392, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3tx2c"]
+material = SubResource("StandardMaterial3D_r78pa")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uxlgm"]
+top_radius = 0.25
+bottom_radius = 0.35
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_etqu8"]
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00885451, -1.19209e-07, -0.0127156)
+floor_max_angle = 0.872665
+script = ExtResource("1_ihfgm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_3tx2c")
+
+[node name="Face" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0191627, 0.436041, -0.464157)
+mesh = SubResource("CylinderMesh_uxlgm")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_etqu8")
+
+[node name="Camera_Controller" type="Node3D" parent="."]
+top_level = true
+script = ExtResource("2_dit00")
+
+[node name="Camera_Target" type="Node3D" parent="Camera_Controller"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 2.10787, 4.20949)
+
+[node name="Camera3D" type="Camera3D" parent="Camera_Controller/Camera_Target"]
+current = true
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_tbqg6")]
+
+[node name="Bullet_Spawn_Point" type="Marker3D" parent="."]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
