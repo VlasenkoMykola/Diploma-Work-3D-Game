@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://72nijl2pkbv1"]
+[gd_scene load_steps=6 format=3 uid="uid://72nijl2pkbv1"]
 
 [ext_resource type="Script" path="res://Start_Screen.gd" id="1_hnka7"]
+[ext_resource type="Texture2D" uid="uid://ckpaqghv8i37w" path="res://resources/images/Cloudy_Sky-Blue_01-1024x512.png" id="2_euw84"]
+[ext_resource type="Script" path="res://ParallaxBackground.gd" id="2_t6r5g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0tjcu"]
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_b3o23"]
 font_size = 32
+font_color = Color(0, 0, 0, 1)
 
 [node name="Start_Screen" type="Node2D"]
 script = ExtResource("1_hnka7")
@@ -25,6 +31,7 @@ hold rightclick - aim
 2 - TODO
 
 Collect 100 money to win the game"
+label_settings = SubResource("LabelSettings_0tjcu")
 
 [node name="Button_Play" type="Button" parent="."]
 offset_left = 429.0
@@ -48,6 +55,17 @@ offset_right = 661.0
 offset_bottom = 138.0
 text = "TODO: game title"
 label_settings = SubResource("LabelSettings_b3o23")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_t6r5g")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1024, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(1.12598, 1.27539)
+texture = ExtResource("2_euw84")
+centered = false
 
 [connection signal="pressed" from="Button_Play" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="Button_Quit" to="." method="_on_button_quit_pressed"]
