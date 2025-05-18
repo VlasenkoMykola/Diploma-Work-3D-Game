@@ -32,19 +32,5 @@ offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(3, 3)
 
-[node name="Label" type="Label" parent="SubViewport/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Test Label
-Test Label
-Test Label
-Test Label
-Test Label
-Test Label
-Test Label
-Test Label
-"
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_t25sa")

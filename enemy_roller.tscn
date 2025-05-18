@@ -1,11 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://ba1knqy3gfibn"]
+[gd_scene load_steps=12 format=3 uid="uid://ba1knqy3gfibn"]
 
 [ext_resource type="Script" path="res://enemy_roller.gd" id="1_0nbjm"]
 [ext_resource type="PackedScene" uid="uid://nikj6l3wkphd" path="res://health_component.tscn" id="2_bxxbg"]
+[ext_resource type="Texture2D" uid="uid://b2y5aqyifo411" path="res://resources/textures/Alien_Muscle_001_COLOR.jpg" id="2_bydus"]
 [ext_resource type="PackedScene" uid="uid://cq4d7vaby58vp" path="res://floating_healthbar.tscn" id="3_q41gq"]
+[ext_resource type="Texture2D" uid="uid://bdx4t7pb6avh7" path="res://resources/textures/Alien_Muscle_001_OCC.jpg" id="3_y2711"]
+[ext_resource type="Texture2D" uid="uid://lctdpr442xmk" path="res://resources/textures/Alien_Muscle_001_DISP.png" id="4_ekag3"]
+[ext_resource type="Texture2D" uid="uid://dra181h6r0jvf" path="res://resources/textures/Alien_Muscle_001_NORM.jpg" id="5_qfnvl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttbf6"]
 albedo_color = Color(1, 0.239216, 0.239216, 1)
+albedo_texture = ExtResource("2_bydus")
+normal_enabled = true
+normal_texture = ExtResource("5_qfnvl")
+ao_enabled = true
+ao_texture = ExtResource("3_y2711")
+heightmap_enabled = true
+heightmap_texture = ExtResource("4_ekag3")
 
 [sub_resource type="SphereMesh" id="SphereMesh_uqquq"]
 material = SubResource("StandardMaterial3D_ttbf6")

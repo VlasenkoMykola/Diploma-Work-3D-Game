@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://pt5k6ed0mwpj"]
+[gd_scene load_steps=8 format=3 uid="uid://pt5k6ed0mwpj"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8o3j"]
-albedo_color = Color(0.588235, 0.588235, 0.588235, 1)
+[ext_resource type="Texture2D" uid="uid://s7v3em40exdx" path="res://resources/textures/Rocks016_1K-JPG_Color.jpg" id="1_onr4f"]
+[ext_resource type="Texture2D" uid="uid://dif24ermi6f3u" path="res://resources/textures/Rocks016_1K-JPG_Displacement.jpg" id="2_choq0"]
+[ext_resource type="Texture2D" uid="uid://c075w6n5ay5k7" path="res://resources/textures/Rocks016_1K-JPG_NormalDX.jpg" id="3_f0b20"]
+[ext_resource type="Texture2D" uid="uid://f8s5yne06tjd" path="res://resources/textures/Rocks016_1K-JPG_Roughness.jpg" id="4_1pmec"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cp03"]
+albedo_texture = ExtResource("1_onr4f")
+roughness_texture = ExtResource("4_1pmec")
+normal_enabled = true
+normal_texture = ExtResource("3_f0b20")
+heightmap_enabled = true
+heightmap_texture = ExtResource("2_choq0")
 
 [sub_resource type="SphereMesh" id="SphereMesh_w81yr"]
-material = SubResource("StandardMaterial3D_c8o3j")
+material = SubResource("StandardMaterial3D_5cp03")
 radius = 1.0
 height = 2.0
 
