@@ -1,20 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://bynr6r04m2lva"]
+[gd_scene load_steps=11 format=3 uid="uid://bynr6r04m2lva"]
 
 [ext_resource type="Script" path="res://hazard_turret_basic.gd" id="1_gf7du"]
+[ext_resource type="Texture2D" uid="uid://duw1drc11br5a" path="res://resources/textures/Metal055A_1K-JPG_Color.jpg" id="2_1yo7i"]
+[ext_resource type="Texture2D" uid="uid://cwg6f5wcpykx3" path="res://resources/textures/Metal055A_1K-JPG_Metalness.jpg" id="3_hrl78"]
+[ext_resource type="Texture2D" uid="uid://cuce61mpymwnv" path="res://resources/textures/Metal055A_1K-JPG_NormalGL.jpg" id="4_0vwyi"]
+[ext_resource type="Texture2D" uid="uid://c306edpah2j6a" path="res://resources/textures/Metal055A_1K-JPG_Roughness.jpg" id="5_88wnt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a17mw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fs3o1"]
-albedo_color = Color(0, 0, 0, 1)
+albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
+albedo_texture = ExtResource("2_1yo7i")
+metallic = 1.0
+metallic_texture = ExtResource("3_hrl78")
+roughness_texture = ExtResource("5_88wnt")
 
 [sub_resource type="BoxMesh" id="BoxMesh_2hw4k"]
 material = SubResource("StandardMaterial3D_fs3o1")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wras4"]
-albedo_color = Color(0.560784, 0.560784, 0.560784, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwybg"]
+albedo_texture = ExtResource("2_1yo7i")
+metallic = 1.0
+metallic_texture = ExtResource("3_hrl78")
+roughness_texture = ExtResource("5_88wnt")
+normal_enabled = true
+normal_texture = ExtResource("4_0vwyi")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qf80b"]
-material = SubResource("StandardMaterial3D_wras4")
+material = SubResource("StandardMaterial3D_dwybg")
 top_radius = 0.2
 bottom_radius = 0.2
 height = 0.5

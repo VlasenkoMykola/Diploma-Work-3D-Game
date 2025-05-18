@@ -25,7 +25,7 @@ var min_knockback_threshold = 0.1  # Stops knockback when very small
 var shockwave_scene = preload("res://shockwave.tscn")
 var bullet_scene = preload("res://bullet.tscn")
 
-var health_regen = 2 #how much health is healer per second
+var health_regen = 2 #how much health is healed per second
 
 func _ready():
 	Globals.player = self  # Assign this instance to the global singleton
@@ -40,12 +40,6 @@ func _physics_process(delta):
 	#regenerate every second in smaller increments (due to delta)
 		
 	$HealthComponent.heal(health_regen * delta)
-	
-	#OLD CODE, now replaced with mouse movement: rotate camera left and right with A/D:
-	#if Input.is_action_just_pressed("cam_left"):
-	#	$Camera_Controller.rotate_y(deg_to_rad(30))
-	#if Input.is_action_just_pressed("cam_right"):
-	#	$Camera_Controller.rotate_y(deg_to_rad(-30))
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -53,10 +47,6 @@ func _physics_process(delta):
 	#double-jump code by me
 	if is_on_floor():
 		air_jumps_left = max_air_jumps
-
-	# Handle jump.
-#	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-#		velocity.y = JUMP_VELOCITY
 
 #velocity restriction is to ensure double-jumps only trigger when they matter
 	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or air_jumps_left > 0) and (velocity.y < jump_velocity * 0.4):
@@ -71,16 +61,12 @@ func _physics_process(delta):
 		get_tree().get_root().add_child(shockwave)  # Add it to the scene				
 		shockwave.transform.origin = global_transform.origin
 
-	if Input.is_action_just_pressed("skill_2"):
-		pass
-		#TODO: add some kind of skill 2?
-		
 	if Input.is_action_just_pressed("attack"):
-		var bullet = bullet_scene.instantiate()  # Create an instance of the shockwave scene
+		var bullet = bullet_scene.instantiate()  # Create an instance of the bullet scene
 #		bullet.damage = bullet_damage
 		bullet.is_player_bullet = true
 		get_tree().get_root().add_child(bullet)  # Add it to the scene		
-		#NOTE: the bullet spawn point note is rotated differently from the rest of the player to ensure bullets shoot forward properly		
+		#NOTE: the bullet spawn point node is rotated differently from the rest of the player to ensure bullets shoot forward properly	
 		bullet.transform.origin = $Bullet_Spawn_Point.global_transform.origin
 		#if aiming, aim towards camera, if not, aim towards where the model is facing
 		if Input.is_action_pressed("aim"):
@@ -95,8 +81,6 @@ func _physics_process(delta):
 #			bullet.transform.basis = $Camera_Controller.transform.basis  # Set the bullet's rotation to match the camera rotation
 		else:
 			bullet.transform.basis = $Bullet_Spawn_Point.global_transform.basis  # Set the bullet's rotation to match the player rotation
-#		attack_cooldown = firing_rate
-
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -116,7 +100,7 @@ func _physics_process(delta):
 #		$MeshInstance3D.rotation_degrees.y = rotate_character_dgrees_y
 		rotation_degrees.y = rotate_character_dgrees_y
 
-#commented out for now to avoid clipping
+#commented out for now to avoid clipping, and the collision shape is now a capsule anyway
 #		$CollisionShape3D.rotation_degrees.y = rotate_character_dgrees_y
 		
 	#update velocity and move character
@@ -143,8 +127,6 @@ func _physics_process(delta):
 	# If aiming, rotate character to match camera direction (ignoring vertical)
 	if Input.is_action_pressed("aim"):
 		var rotate_character_dgrees_y2 = $Camera_Controller.rotation_degrees.y
-#UPD: now rotate the whole chracter instead of only the mesh
-#		$MeshInstance3D.rotation_degrees.y = rotate_character_dgrees_y
 		direction = camera_basis
 		rotation_degrees.y = rotate_character_dgrees_y2
 	
@@ -176,4 +158,3 @@ func _on_health_depleted():
 	#reload scene if health runs out
 	print("Health depleted!")
 	get_tree().reload_current_scene()
-#	queue_free()  # Example: destroy the entity

@@ -28,7 +28,6 @@ leftclick - shoot
 hold rightclick - aim
 
 1 - shockwave
-2 - TODO
 
 Collect 100 money to win the game"
 label_settings = SubResource("LabelSettings_0tjcu")
