@@ -152,4 +152,4 @@ func _on_health_changed(current, max):
 func _on_health_depleted():
 	#reload scene if health runs out
 	print("Health depleted!")
-	get_tree().reload_current_scene()
+	Globals.defeat()
