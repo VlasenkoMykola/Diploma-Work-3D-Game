@@ -37,10 +37,8 @@ shape = SubResource("CapsuleShape3D_etqu8")
 top_level = true
 script = ExtResource("2_dit00")
 
-[node name="Camera_Target" type="Node3D" parent="Camera_Controller"]
+[node name="Camera3D" type="Camera3D" parent="Camera_Controller"]
 transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 2.10787, 4.20949)
-
-[node name="Camera3D" type="Camera3D" parent="Camera_Controller/Camera_Target"]
 current = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_tbqg6")]
