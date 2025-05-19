@@ -6,8 +6,6 @@ var speed = 5.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var camera_speed = 0.1
-
 var jump_velocity = 10
 var max_air_jumps = 1
 var air_jumps_left = max_air_jumps
@@ -139,9 +137,6 @@ func _physics_process(delta):
 		if collision.get_collider() is RigidBody3D:
 			collision.get_collider().apply_central_impulse(-collision.get_normal() * push_force)
 
-	#Make camera controller gradually match the position of player
-	$Camera_Controller.position = lerp($Camera_Controller.position,position,camera_speed)
-	
 # Function to apply knockback from an attack
 func apply_knockback(force: Vector3):
 	#if falling and knockback is positive, reset falling

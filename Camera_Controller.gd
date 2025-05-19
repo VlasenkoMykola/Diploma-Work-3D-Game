@@ -1,5 +1,7 @@
 extends Node3D
 
+var camera_speed = 0.1
+
 # Sensitivity for mouse movement
 var mouse_sensitivity: float = 0.1
 
@@ -10,6 +12,11 @@ var rotation_pitch: float = 0.0
 func _ready():
 	# Hide the mouse cursor and capture it for the window
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+#using physics process to make it synchronized with player movement
+func _physics_process(delta):	
+	#Make camera controller gradually match the position of player ($".." is the Player node)
+	position = lerp(position, $"..".position,camera_speed)
 
 func _process(delta: float):
 	if Input.is_action_just_pressed("ui_cancel"):
