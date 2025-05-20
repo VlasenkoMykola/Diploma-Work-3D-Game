@@ -84,19 +84,6 @@ func _physics_process(delta):
 				# Apply the force
 				body.apply_central_impulse(direction * force_strength)
 
-#OLD CODE BACKUP:
-	
-#		# Apply force to each body
-#		for body in bodies:
-#			if body is RigidBody3D:  # Ensure the body can respond to forces
-#				var direction = (body.global_transform.origin - shockwave_center).normalized()
-#				var force = direction * shockwave_force
-#				body.apply_central_impulse(force)
-			
-#	# Delete the shockwave after applying the force
-#	queue_free()
-
-
 #IMPORTANT: THE FUNCTION ASSUMES THAT THE OBJECT HAS A MATERIAL
 #AND THAT THE MATERIAL HAS TRANSPARENCY ENABLED AND BLEND MODE ALPHA
 

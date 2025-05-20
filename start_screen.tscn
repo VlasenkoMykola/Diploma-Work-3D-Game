@@ -17,9 +17,7 @@ script = ExtResource("1_hnka7")
 [node name="Label_Controls" type="Label" parent="."]
 offset_right = 380.0
 offset_bottom = 423.0
-text = "IPS-43 Vlasenko Mykola
-
-Controls:
+text = "Controls:
 
 WASD - move
 Space - jump (can double jump)
@@ -52,7 +50,8 @@ offset_left = 429.0
 offset_top = 59.0
 offset_right = 661.0
 offset_bottom = 138.0
-text = "TODO: game title"
+text = "IPS-43
+Vlasenko Mykola"
 label_settings = SubResource("LabelSettings_b3o23")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
